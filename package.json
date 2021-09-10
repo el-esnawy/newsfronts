@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node backend/server.js",
-    "server": "nodemon backend/server.js",
+    "start": "node ./BackEnd/server.js",
+    "server": "nodemon ./BackEnd/server.js",
     "client": "npm start --prefix FrontEnd",
     "client:build": "npm run build --prefix FrontEnd",
     "start:dev": "concurrently \"npm run server\" \"npm run client\"",
