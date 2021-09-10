@@ -1,21 +1,22 @@
 const chalk = require("chalk");
 const dotenv = require("dotenv");
-
 dotenv.config();
-const express = require("express");
-const morgan = require("morgan");
-const rateLimit = require("express-rate-limit");
-const AppError = require("./util/AppError");
+const path = require("path");
+
 const helmet = require("helmet");
 const mongoSanitize = require("express-mongo-sanitize");
 const xssClean = require("xss-clean");
 const articleRouter = require("./Routes/articleRouter");
+
+const express = require("express");
+const morgan = require("morgan");
+const rateLimit = require("express-rate-limit");
+const AppError = require("./util/AppError");
 const connect = require("./util/connectToDb");
+
 connect();
 
 const port = process.env.PORT || 3000;
-
-dotenv.config();
 
 var cors = require("cors");
 
