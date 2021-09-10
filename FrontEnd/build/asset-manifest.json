@@ -1,0 +1,39 @@
+{
+  "files": {
+    "main.css": "/static/css/main.83a46a90.chunk.css",
+    "main.js": "/static/js/main.2b37e35e.chunk.js",
+    "main.js.map": "/static/js/main.2b37e35e.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.6cbc5f42.js",
+    "runtime-main.js.map": "/static/js/runtime-main.6cbc5f42.js.map",
+    "static/css/2.8052dde3.chunk.css": "/static/css/2.8052dde3.chunk.css",
+    "static/js/2.18249453.chunk.js": "/static/js/2.18249453.chunk.js",
+    "static/js/2.18249453.chunk.js.map": "/static/js/2.18249453.chunk.js.map",
+    "index.html": "/index.html",
+    "static/css/2.8052dde3.chunk.css.map": "/static/css/2.8052dde3.chunk.css.map",
+    "static/css/main.83a46a90.chunk.css.map": "/static/css/main.83a46a90.chunk.css.map",
+    "static/js/2.18249453.chunk.js.LICENSE.txt": "/static/js/2.18249453.chunk.js.LICENSE.txt",
+    "static/media/1200px-Axios_logo_(2020).svg.78e20a74.png": "/static/media/1200px-Axios_logo_(2020).svg.78e20a74.png",
+    "static/media/ABC-logo.e9d8cf54.png": "/static/media/ABC-logo.e9d8cf54.png",
+    "static/media/BBC_logo.dbf3a320.png": "/static/media/BBC_logo.dbf3a320.png",
+    "static/media/BI-logo.ed118c3e.png": "/static/media/BI-logo.ed118c3e.png",
+    "static/media/Breitebart-logo (2).026433b9.jpg": "/static/media/Breitebart-logo (2).026433b9.jpg",
+    "static/media/BuzzFeed-Logo.4f74af05.png": "/static/media/BuzzFeed-Logo.4f74af05.png",
+    "static/media/CNN-logo.4050e2dc.png": "/static/media/CNN-logo.4050e2dc.png",
+    "static/media/semantic.min.css": "/static/media/outline-icons.ddae9b1b.woff",
+    "static/media/foxNews-logo.69a634aa.jpg": "/static/media/foxNews-logo.69a634aa.jpg",
+    "static/media/fox_sports_logo.d8c4e67e.png": "/static/media/fox_sports_logo.d8c4e67e.png",
+    "static/media/ign-logo.d8826065.png": "/static/media/ign-logo.d8826065.png",
+    "static/media/msnbc-logo.2bbc4eb1.png": "/static/media/msnbc-logo.2bbc4eb1.png",
+    "static/media/nbc-logo.b214552d.png": "/static/media/nbc-logo.b214552d.png",
+    "static/media/newsweek-logo.68819ab1.jpg": "/static/media/newsweek-logo.68819ab1.jpg",
+    "static/media/reuters-logo.d7bac795.png": "/static/media/reuters-logo.d7bac795.png",
+    "static/media/vice-logo.4645c8a2.jpg": "/static/media/vice-logo.4645c8a2.jpg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.6cbc5f42.js",
+    "static/css/2.8052dde3.chunk.css",
+    "static/js/2.18249453.chunk.js",
+    "static/css/main.83a46a90.chunk.css",
+    "static/js/main.2b37e35e.chunk.js"
+  ]
+}
