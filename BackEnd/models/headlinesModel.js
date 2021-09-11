@@ -29,7 +29,6 @@ const articleSchemaOptions = {
   },
   url: {
     type: String,
-    unique: true,
   },
   category: {
     type: String,

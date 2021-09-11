@@ -3,8 +3,8 @@ const dotenv = require("dotenv");
 const chalk = require("chalk");
 
 const connectToDB = (path = "./BackEnd/config.env") => {
-  dotenv.config({ path });
-  console.log(process.env.NODE_ENV);
+  dotenv.config();
+
   const DB = process.env.DATABASE.replace(
     "<PASSWORD>",
     process.env.DATABASE_PASSWORD,

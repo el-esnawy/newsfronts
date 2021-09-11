@@ -99,7 +99,6 @@ const PaginationBar = () => {
       event.target.textContent.includes("›") &&
       currentPage + 1 < totalPages
     ) {
-      console.log("next page");
       dispatch(getAllArticles({ ...params, page: currentPage + 1 }));
     } else if (event.target.textContent.includes("»")) {
       dispatch(getAllArticles({ ...params, page: totalPages }));

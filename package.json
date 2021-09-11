@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node ./BackEnd/server.js",
-    "server": "nodemon ./BackEnd/server.js",
+    "start": "node backend/server.js",
+    "server": "nodemon BackEnd/server.js",
     "client": "npm start --prefix FrontEnd",
     "client:build": "npm run build --prefix FrontEnd",
     "start:dev": "concurrently \"npm run server\" \"npm run client\"",
@@ -15,7 +15,7 @@
     "cleanup": "node ./BackEnd/util/fetchArticles.js ",
     "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix FrontEnd"
   },
-  "author": "",
+  "author": "Mohamed El-Esnawy",
   "license": "ISC",
   "dependencies": {
     "after-load": "^1.0.4",

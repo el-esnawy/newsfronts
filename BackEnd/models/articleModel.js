@@ -29,7 +29,6 @@ const articleSchemaOptions = {
   },
   url: {
     type: String,
-    unique: true,
   },
   category: {
     type: String,
@@ -45,7 +44,7 @@ const articleSchema = new mongoose.Schema(articleSchemaOptions, {
   },
 });
 
-articleSchema.index({ url: 1 }, { unique: 1 });
+// articleSchema.index({ url: 1 }, { unique: 1 });
 
 const Article = mongoose.model("articles", articleSchema);
 module.exports = Article;

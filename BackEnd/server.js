@@ -1,6 +1,17 @@
 const chalk = require("chalk");
 const dotenv = require("dotenv");
+
+process.on("unhandledRejection", (err) => {
+  console.log(err);
+  console.log("UNHANDLER REJECTION...SHUTTING DOWN...");
+
+  server.close(() => {
+    process.exit(1);
+  });
+});
+
 dotenv.config();
+
 const path = require("path");
 
 const helmet = require("helmet");
@@ -14,16 +25,19 @@ const rateLimit = require("express-rate-limit");
 const AppError = require("./util/AppError");
 const connect = require("./util/connectToDb");
 
-connect();
-
 const port = process.env.PORT || 3000;
 
 var cors = require("cors");
 
 const app = express();
+
 app.use(cors());
 
-app.use(helmet());
+// app.use(
+//   helmet({
+//     contentSecurityPolicy: false,
+//   }),
+// );
 
 const limiter = rateLimit({
   max: 100,
@@ -34,6 +48,7 @@ const limiter = rateLimit({
 app.use("/api", limiter);
 
 if (process.env.NODE_ENV === "development") app.use(morgan("dev"));
+
 app.use(
   express.json({
     limit: "10kb",
@@ -47,31 +62,24 @@ app.use(xssClean());
 app.use("/api/v1/", articleRouter);
 
 if (process.env.NODE_ENV === "production") {
-  app.use(express.static(path.join(__dirname, "/FrontEnd/build")));
+  app.use(express.static(path.join(__dirname, "../FrontEnd/build")));
   app.get("*", (req, res) =>
-    res.sendFile(path.resolve(__dirname, "FrontEnd", "build", "index.html")),
+    res.sendFile(path.join(__dirname, "../FrontEnd/build")),
   );
+} else {
+  console.log(`APP is running on Port: ${port}`);
 }
 app.all("*", (req, res, next) => {
   next(new AppError(`Can't Find ${req.originalUrl} on this Server!`, 404));
 });
 
-process.on("uncaughtException", (err) => {
-  console.log("UNHANDLER EXCEPTION...SHUTTING DOWN...", err);
-  process.exit(1);
-});
-
+connect();
 const server = app.listen(port, () => {
   if (process.env.NODE_ENV === "development") {
     console.log(chalk.blackBright.bgWhite(`App is running on Port: ${port}`));
   }
 });
-
-process.on("unhandledRejection", (err) => {
-  console.log(err);
-  console.log("UNHANDLER REJECTION...SHUTTING DOWN...");
-
-  server.close(() => {
-    process.exit(1);
-  });
+process.on("uncaughtException", (err) => {
+  console.log("UNHANDLER EXCEPTION...SHUTTING DOWN...", err);
+  process.exit(1);
 });
