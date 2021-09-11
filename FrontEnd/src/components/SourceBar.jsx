@@ -7,11 +7,11 @@ import { Accordion, Icon } from "semantic-ui-react";
 import SourceSection from "./SourceSection";
 
 const StyledAccordion = styled(Accordion)`
-  background-color: #93b5c6;
+  background-color: #89b5ca;
 `;
 
 const StyledAccordionTitle = styled(Accordion.Title)`
-  color: #334257 !important;
+  color: #ffffff !important;
   font-size: 1.2rem !important;
   text-shadow: 0 3px 5px rgba(0, 0, 0, 0.3);
 `;
