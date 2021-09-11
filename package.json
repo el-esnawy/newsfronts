@@ -13,7 +13,7 @@
     "headlines:import": "node ./BackEnd/util/fetchArticles.js --import-head",
     "import-all": "node ./BackEnd/util/fetchArticles.js --import-all",
     "cleanup": "node ./BackEnd/util/fetchArticles.js ",
-    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install npm && run build"
+    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install npm start --prefix FrontEnd && npm run client:build"
   },
   "author": "Mohamed El-Esnawy",
   "license": "ISC",
