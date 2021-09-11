@@ -4,7 +4,6 @@ import CategoryBar from "../components/CategoryBar";
 import HeaderNav from "../components/HeaderNav";
 import NewsPage from "../components/News/NewsPage";
 import SourceBar from "../components/SourceBar";
-import PaginationBar from "../components/PaginationBar";
 
 const HomeScreen = ({ match }) => {
   const { term, source, category } = match.params;
@@ -23,7 +22,6 @@ const HomeScreen = ({ match }) => {
       ) : (
         <NewsPage />
       )}
-      <PaginationBar />
     </React.Fragment>
   );
 };

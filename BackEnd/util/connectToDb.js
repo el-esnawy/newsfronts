@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 const dotenv = require("dotenv");
 const chalk = require("chalk");
 
-const connectToDB = (path = "./BackEnd/config.env") => {
+const connectToDB = () => {
   dotenv.config();
 
   const DB = process.env.DATABASE.replace(

@@ -57,6 +57,7 @@ const SourceButton = styled(NavLink)`
   display: grid;
   place-items: center;
   min-height: 3rem;
+  margin: 0.25rem;
 
   &:hover {
     color: #000000;

@@ -115,57 +115,61 @@ const PaginationBar = () => {
 
   return (
     <PaginationContainer>
-      <Paginate>
-        {currentPage > 2 && (
-          <div style={{ display: "flex" }}>
-            <PaginateFirst onClick={handlePageChange} />
-            <PaginatePrev onClick={handlePageChange} />
-          </div>
-        )}
-
-        {!(currentPage - 2 < 1) && (
-          <PaginateItem onClick={handlePageChange}>
-            {currentPage - 2}
-          </PaginateItem>
-        )}
-        {!(currentPage - 1 < 1) && (
-          <PaginateItem onClick={handlePageChange}>
-            {currentPage - 1}
-          </PaginateItem>
-        )}
-
-        <CurrentPageSelected onClick={handlePageChange}>
-          {currentPage}
-        </CurrentPageSelected>
-
-        {!(currentPage + 1 > totalPages) && (
-          <PaginateItem onClick={handlePageChange}>
-            {currentPage + 1}
-          </PaginateItem>
-        )}
-        {!(currentPage + 2 > totalPages) && (
-          <PaginateItem onClick={handlePageChange}>
-            {currentPage + 2}
-          </PaginateItem>
-        )}
-
-        {!(currentPage + 2 >= totalPages) && <PaginateEllipsis />}
-        {currentPage !== totalPages && (
-          <React.Fragment>
-            {!(
-              currentPage + 1 >= totalPages || currentPage + 2 >= totalPages
-            ) && (
-              <PaginateItem onClick={handlePageChange}>
-                {totalPages}
-              </PaginateItem>
-            )}
+      {loading ? (
+        <div></div>
+      ) : (
+        <Paginate>
+          {currentPage > 2 && (
             <div style={{ display: "flex" }}>
-              <PaginateNext onClick={handlePageChange} />
-              <PaginateLast onClick={handlePageChange} />
+              <PaginateFirst onClick={handlePageChange} />
+              <PaginatePrev onClick={handlePageChange} />
             </div>
-          </React.Fragment>
-        )}
-      </Paginate>
+          )}
+
+          {!(currentPage - 2 < 1) && (
+            <PaginateItem onClick={handlePageChange}>
+              {currentPage - 2}
+            </PaginateItem>
+          )}
+          {!(currentPage - 1 < 1) && (
+            <PaginateItem onClick={handlePageChange}>
+              {currentPage - 1}
+            </PaginateItem>
+          )}
+
+          <CurrentPageSelected onClick={handlePageChange}>
+            {currentPage}
+          </CurrentPageSelected>
+
+          {!(currentPage + 1 > totalPages) && (
+            <PaginateItem onClick={handlePageChange}>
+              {currentPage + 1}
+            </PaginateItem>
+          )}
+          {!(currentPage + 2 > totalPages) && (
+            <PaginateItem onClick={handlePageChange}>
+              {currentPage + 2}
+            </PaginateItem>
+          )}
+
+          {!(currentPage + 2 >= totalPages) && <PaginateEllipsis />}
+          {currentPage !== totalPages && (
+            <React.Fragment>
+              {!(
+                currentPage + 1 >= totalPages || currentPage + 2 >= totalPages
+              ) && (
+                <PaginateItem onClick={handlePageChange}>
+                  {totalPages}
+                </PaginateItem>
+              )}
+              <div style={{ display: "flex" }}>
+                <PaginateNext onClick={handlePageChange} />
+                <PaginateLast onClick={handlePageChange} />
+              </div>
+            </React.Fragment>
+          )}
+        </Paginate>
+      )}
     </PaginationContainer>
   );
 };

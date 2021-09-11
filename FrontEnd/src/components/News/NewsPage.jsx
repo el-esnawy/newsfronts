@@ -4,6 +4,7 @@ import NewsCard from "./NewsCard";
 import Spinner from "../Spinner";
 import { useDispatch, useSelector } from "react-redux";
 import { getAllArticles } from "../../redux/Articles/articlesAsync";
+import PaginationBar from "../PaginationBar";
 
 const NewsPage = (props) => {
   const { articles, loading } = useSelector((state) => state.articles);
@@ -40,6 +41,9 @@ const NewsPage = (props) => {
             );
           })}
         </Grid.Column>
+      </Grid.Row>
+      <Grid.Row>
+        <PaginationBar />
       </Grid.Row>
     </Grid>
   );

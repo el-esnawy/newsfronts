@@ -11,7 +11,7 @@ const websiteLogo = require("website-logo");
 const sanitizeHtml = require("sanitize-html");
 const validURL = require("valid-url");
 
-connectToDb("./BackEnd/config.env");
+connectToDb("./.env");
 
 dotenv.config();
 let currentAPIKey = 0;
@@ -24,6 +24,49 @@ const DATE_STRING = `${date.getFullYear()}-${(
   1 +
   ""
 ).padStart(2, "0")}-${(date.getDate() + "").padStart(2, "0")}`;
+
+const removeDuplicates = async (Model) => {
+  let counter = 0;
+
+  // const articles = await Model.find();
+  // for (let index = 0; index < articles.length; index++) {
+  //   const article = articles[index];
+  //   const duplicates = await Model.find({ url: article.url });
+  //   if (duplicates.length > 1) {
+  //     for (let i = 1; i < duplicates.length; i++) {
+  //       const deleted = await Model.findByIdAndDelete(duplicates[i]._id);
+  //       counter++;
+  //       console.log(deleted._id, "Articles Deleted: " + counter);
+  //     }
+
+  //     if (index === articles.length - 1) console.log("ALL DONE");
+  //   }
+  // }
+
+  const documents = await Model.aggregate([
+    {
+      $group: {
+        _id: { url: "$url" },
+        url: { $addToSet: "$_id" },
+        count: { $sum: 1 },
+      },
+    },
+    {
+      $match: {
+        count: { $gt: 1 },
+      },
+    },
+  ]);
+  console.log(documents);
+
+  documents.forEach(async (document) => {
+    const { url } = document;
+    for (let i = 1; i < url.length; i++) {
+      await Model.findByIdAndDelete(url[i]);
+      console.log(`Deleted ${url[i]}`);
+    }
+  });
+};
 
 const topHeadlines = async (source, category) => {
   try {
@@ -220,25 +263,6 @@ const cleanAuthor = async (article) => {
   }
 };
 
-const removeDuplicates = async (Model) => {
-  let counter = 0;
-
-  const articles = await Model.find();
-  for (let index = 0; index < articles.length; index++) {
-    const article = articles[index];
-    const duplicates = await Model.find({ url: article.url });
-    if (duplicates.length > 1) {
-      for (let i = 1; i < duplicates.length; i++) {
-        const deleted = await Model.findByIdAndDelete(duplicates[i]._id);
-        counter++;
-        console.log(deleted._id, "Articles Deleted: " + counter);
-      }
-
-      if (index === articles.length - 1) console.log("ALL DONE");
-    }
-  }
-};
-
 async function cleanUp() {
   await Article.deleteMany({ urlToImage: { $eq: null || undefined } });
   await Headlines.deleteMany({ urlToImage: { $eq: null || undefined } });
@@ -298,5 +322,8 @@ if (process.argv[2] === "--delete") {
 
 // getSources();
 // cleanUp();
+
+removeDuplicates(Article);
+removeDuplicates(Headlines);
 
 module.exports = everything;

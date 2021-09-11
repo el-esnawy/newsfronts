@@ -1,5 +1,15 @@
 const chalk = require("chalk");
 const dotenv = require("dotenv");
+const path = require("path");
+
+const mongoSanitize = require("express-mongo-sanitize");
+const xssClean = require("xss-clean");
+const articleRouter = require("./Routes/articleRouter");
+
+const express = require("express");
+const morgan = require("morgan");
+const rateLimit = require("express-rate-limit");
+const AppError = require("./util/AppError");
 
 process.on("unhandledRejection", (err) => {
   console.log(err);
@@ -12,17 +22,6 @@ process.on("unhandledRejection", (err) => {
 
 dotenv.config();
 
-const path = require("path");
-
-const helmet = require("helmet");
-const mongoSanitize = require("express-mongo-sanitize");
-const xssClean = require("xss-clean");
-const articleRouter = require("./Routes/articleRouter");
-
-const express = require("express");
-const morgan = require("morgan");
-const rateLimit = require("express-rate-limit");
-const AppError = require("./util/AppError");
 const connect = require("./util/connectToDb");
 
 const port = process.env.PORT || 3000;
