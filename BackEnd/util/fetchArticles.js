@@ -26,23 +26,6 @@ const DATE_STRING = `${date.getFullYear()}-${(
 ).padStart(2, "0")}-${(date.getDate() + "").padStart(2, "0")}`;
 
 const removeDuplicates = async (Model) => {
-  let counter = 0;
-
-  // const articles = await Model.find();
-  // for (let index = 0; index < articles.length; index++) {
-  //   const article = articles[index];
-  //   const duplicates = await Model.find({ url: article.url });
-  //   if (duplicates.length > 1) {
-  //     for (let i = 1; i < duplicates.length; i++) {
-  //       const deleted = await Model.findByIdAndDelete(duplicates[i]._id);
-  //       counter++;
-  //       console.log(deleted._id, "Articles Deleted: " + counter);
-  //     }
-
-  //     if (index === articles.length - 1) console.log("ALL DONE");
-  //   }
-  // }
-
   const documents = await Model.aggregate([
     {
       $group: {
@@ -59,12 +42,14 @@ const removeDuplicates = async (Model) => {
   ]);
   console.log(documents);
 
-  documents.forEach(async (document) => {
+  documents.forEach(async (document, index) => {
     const { url } = document;
     for (let i = 1; i < url.length; i++) {
       await Model.findByIdAndDelete(url[i]);
       console.log(`Deleted ${url[i]}`);
     }
+
+    if (index === documents.length - 1) return true;
   });
 };
 
@@ -149,7 +134,7 @@ async function GetAllArticlesToday() {
   console.log(sourceIds);
 
   for (let i = 0; i < sourceIds.length; i++) {
-    const articles = await everything(sourceIds[i], "bitcoin");
+    const articles = await everything(sourceIds[i]);
     if (articles.length === 0) continue;
 
     const fullarticles = articles.map((article) => {
@@ -245,7 +230,7 @@ const cleanHTMLTAGS = async (article, index) => {
     const updateArticle = await Article.findByIdAndUpdate(id, newArticles);
 
     if (updateArticle) {
-      console.log(`${index} / ${AllArticles.length}`);
+      console.log(`${index} / ${updateArticle.length}`);
     }
   }
 };
@@ -266,15 +251,20 @@ const cleanAuthor = async (article) => {
 async function cleanUp() {
   await Article.deleteMany({ urlToImage: { $eq: null || undefined } });
   await Headlines.deleteMany({ urlToImage: { $eq: null || undefined } });
-  await removeDuplicates(Article);
-  await removeDuplicates(Headlines);
+  const ArticlesDone = await removeDuplicates(Article);
+  const headlinesDone = await removeDuplicates(Headlines);
 
-  const AllArticles = await Article.find();
-  const AllHeadlines = await Headlines.find();
-  AllArticles.forEach(cleanHTMLTAGS);
-  AllArticles.forEach(cleanAuthor);
-  AllHeadlines.forEach(cleanHTMLTAGS);
-  AllHeadlines.forEach(cleanAuthor);
+  if (ArticlesDone) {
+    const AllArticles = await Article.find();
+    AllArticles.forEach(cleanHTMLTAGS);
+    AllArticles.forEach(cleanAuthor);
+  }
+
+  if (headlinesDone) {
+    const AllHeadlines = await Headlines.find();
+    AllHeadlines.forEach(cleanHTMLTAGS);
+    AllHeadlines.forEach(cleanAuthor);
+  }
 }
 async function getSources() {
   // await Sources.deleteMany();
@@ -320,10 +310,8 @@ if (process.argv[2] === "--delete") {
   deleteAllData();
 }
 
-// getSources();
-// cleanUp();
-
-removeDuplicates(Article);
-removeDuplicates(Headlines);
+if (process.argv[2] === "--cleanup") {
+  cleanUp();
+}
 
 module.exports = everything;

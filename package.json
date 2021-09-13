@@ -12,7 +12,7 @@
     "article:import": "node ./BackEnd/util/fetchArticles.js --import-articles",
     "headlines:import": "node ./BackEnd/util/fetchArticles.js --import-head",
     "import-all": "node ./BackEnd/util/fetchArticles.js --import-all",
-    "cleanup": "node ./BackEnd/util/fetchArticles.js "
+    "cleanup": "node ./BackEnd/util/fetchArticles.js --cleanup "
   },
   "author": "Mohamed El-Esnawy",
   "license": "ISC",

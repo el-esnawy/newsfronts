@@ -23,7 +23,7 @@ const BetaTag = styled.sub`
   margin-left: 0.5rem;
   background-color: #fff;
   color: #334257;
-  font-size: 1.2rem;
+  font-size: 0.8rem;
   font-weight: 800;
   padding: 0.2rem;
   border-radius: 4px;
@@ -46,8 +46,10 @@ const SearchIcon = styled.div`
   }
 `;
 
+const SearchBar = styled.input``;
+
 const Brand = styled(Menu.Item)`
-  justify-content: space-between;
+  justify-content: space-around;
 `;
 
 const HeaderNav = () => {
@@ -95,7 +97,10 @@ const HeaderNav = () => {
               icon
               placeholder='Search...'
               onSubmit={searchHandler}>
-              <input ref={searchTerm} />
+              <SearchBar
+                ref={searchTerm}
+                style={{ width: "100%", borderRadius: "150px" }}
+              />
               <Icon name='search' />
             </Form.Input>
           </Form>
@@ -115,7 +120,10 @@ const HeaderNav = () => {
                 icon
                 placeholder='Search...'
                 onSubmit={searchHandler}>
-                <input ref={searchTerm} />
+                <input
+                  ref={searchTerm}
+                  style={{ width: "100%", borderRadius: "150px" }}
+                />
                 <Icon name='search' />
               </Form.Input>
             </Form>
