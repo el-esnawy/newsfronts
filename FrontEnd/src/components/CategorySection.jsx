@@ -4,7 +4,8 @@ import { NavLink } from "react-router-dom";
 
 const CategoryContainer = styled.div`
   width: 100%;
-  background-image: linear-gradient(to bottom right, #476072 40%, #548ca8);
+  /* background-image: linear-gradient(to bottom right, #476072 40%, #548ca8); */
+  background-color: #93b5c6;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(min-content, 12rem));
   justify-content: center;
@@ -23,14 +24,14 @@ const CatButton = styled(NavLink)`
   border-radius: 10px;
   padding: 0.5rem;
 
-  color: #eeeeee;
+  color: #777777;
   background-image: linear-gradient(
     to bottom right,
     rgb(255, 255, 255, 0.6),
     rgb(255, 255, 255, 0.2)
   );
-  filter: opacity(0.6);
-  filter: blur(0.7px);
+  filter: opacity(0.7);
+  filter: blur(0.5px);
   transition: all 0.4s;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.25);
   border: 2px solid rgba(255, 255, 255, 0.6);
@@ -40,9 +41,12 @@ const CatButton = styled(NavLink)`
 
   &:hover {
     background-color: #ffffff;
-    transform: translateY(-6px);
+    transform: translateY(-4px);
     color: #000000;
     filter: blur(0px);
+  }
+  &:active {
+    transform: translateY(-1px);
   }
 
   @media (max-width: 950px) {

@@ -6,33 +6,35 @@ import bbcLogo from "../images/BBC_logo.png";
 import CNNLogo from "../images/CNN-logo.png";
 import axiosLogo from "../images/1200px-Axios_logo_(2020).svg.png";
 import ABCLogo from "../images/ABC-logo.png";
-import ARSLogo from "../images/ARS-logo.png";
+import ARSLogo from "../images/ARS-logo-removebg-preview.png";
 
 import BILogo from "../images/BI-logo.png";
-import BRLogo from "../images/Bleacher-logo.png";
-import BloomLogo from "../images/bloomber-logo.png";
-import BreitLogo from "../images/Breitebart-logo (2).jpg";
+import BRLogo from "../images/Bleacher-logo-removebg-preview.png";
+import BloomLogo from "../images/bloomber-logo-removebg-preview.png";
+import BreitLogo from "../images/Breitebart-logo-removebg-preview.png";
 import BuzzFeedLogo from "../images/BuzzFeed-Logo.png";
-import CBCLogo from "../images/CBC-logo.png";
-import CBSLogo from "../images/cbs-logo.png";
+import CBCLogo from "../images/CBC-logo-removebg-preview.png";
+import CBSLogo from "../images/cbs-logo-removebg-preview.png";
 import FoxSportsLogo from "../images/fox_sports_logo.png";
 import FoxNewsLogo from "../images/foxNews-logo.jpg";
-import viceLogo from "../images/vice-logo.jpg";
+import viceLogo from "../images/vice-logo-removebg-preview.png";
 
 import reutersLogo from "../images/reuters-logo.png";
-import newsweekLogo from "../images/newsweek-logo.jpg";
-import independent from "../images/independent-logo.png";
+import newsweekLogo from "../images/newsweek-logo-removebg-preview.png";
+import independent from "../images/independent-logo-removebg-preview.png";
 import nbcLogo from "../images/nbc-logo.png";
 
 import msnbcLogo from "../images/msnbc-logo.png";
 
-import ignLogo from "../images/ign-logo.png";
+import ignLogo from "../images/ign-logo-removebg-preview.png";
 
 const SourceContainer = styled.div`
   height: max-content;
   padding: 1rem 3rem;
   /* background-color: hsl(0, 0%, 90.58823529411765%); */
-  background-color: #93b5c6;
+  /* background-color: #93b5c6; */
+
+  background-image: linear-gradient(to bottom right, #476072 40%, #548ca8);
   /* 
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(min-content, 10rem)); */
@@ -47,10 +49,18 @@ const SourceContainer = styled.div`
 `;
 
 const SourceButton = styled(NavLink)`
-  flex: 0 1 12%;
+  flex: 0 1 10%;
   width: max-content;
-  color: #ffffff;
-  background-color: ${(props) => (props.bgcolor ? props.bgcolor : "#ffffff")};
+
+  /* background-color: ${(props) =>
+    props.bgcolor ? props.bgcolor : "#ffffff"}; */
+  background-image: linear-gradient(
+    to bottom right,
+    rgb(255, 255, 255, 0.8),
+    rgb(255, 255, 255, 0.6)
+  );
+  filter: opacity(0.8);
+
   transition: all 0.3s;
   box-shadow: 0 6px 8px rgba(0, 0, 0, 0.25);
   border-radius: 5px;
@@ -60,11 +70,15 @@ const SourceButton = styled(NavLink)`
   place-items: center;
   min-height: 3rem;
   margin: 0.2rem;
-
+  border: 2px solid rgba(255, 255, 255, 0.5);
   &:hover {
     color: #000000;
-    transform: translateY(-6px);
+    transform: translateY(-4px);
     box-shadow: 0 8px 12px rgba(0, 0, 0, 0.25);
+    filter: opacity(1);
+  }
+  &:active {
+    transform: translateY(-1px);
   }
 `;
 
