@@ -1,17 +1,17 @@
 {
   "files": {
     "main.css": "/static/css/main.e035954d.chunk.css",
-    "main.js": "/static/js/main.838ac48d.chunk.js",
-    "main.js.map": "/static/js/main.838ac48d.chunk.js.map",
+    "main.js": "/static/js/main.b2c87f13.chunk.js",
+    "main.js.map": "/static/js/main.b2c87f13.chunk.js.map",
     "runtime-main.js": "/static/js/runtime-main.6cbc5f42.js",
     "runtime-main.js.map": "/static/js/runtime-main.6cbc5f42.js.map",
     "static/css/2.8052dde3.chunk.css": "/static/css/2.8052dde3.chunk.css",
-    "static/js/2.93b364af.chunk.js": "/static/js/2.93b364af.chunk.js",
-    "static/js/2.93b364af.chunk.js.map": "/static/js/2.93b364af.chunk.js.map",
+    "static/js/2.60df239f.chunk.js": "/static/js/2.60df239f.chunk.js",
+    "static/js/2.60df239f.chunk.js.map": "/static/js/2.60df239f.chunk.js.map",
     "index.html": "/index.html",
     "static/css/2.8052dde3.chunk.css.map": "/static/css/2.8052dde3.chunk.css.map",
     "static/css/main.e035954d.chunk.css.map": "/static/css/main.e035954d.chunk.css.map",
-    "static/js/2.93b364af.chunk.js.LICENSE.txt": "/static/js/2.93b364af.chunk.js.LICENSE.txt",
+    "static/js/2.60df239f.chunk.js.LICENSE.txt": "/static/js/2.60df239f.chunk.js.LICENSE.txt",
     "static/media/1200px-Axios_logo_(2020).svg.78e20a74.png": "/static/media/1200px-Axios_logo_(2020).svg.78e20a74.png",
     "static/media/ABC-logo.e9d8cf54.png": "/static/media/ABC-logo.e9d8cf54.png",
     "static/media/BBC_logo.dbf3a320.png": "/static/media/BBC_logo.dbf3a320.png",
@@ -32,8 +32,8 @@
   "entrypoints": [
     "static/js/runtime-main.6cbc5f42.js",
     "static/css/2.8052dde3.chunk.css",
-    "static/js/2.93b364af.chunk.js",
+    "static/js/2.60df239f.chunk.js",
     "static/css/main.e035954d.chunk.css",
-    "static/js/main.838ac48d.chunk.js"
+    "static/js/main.b2c87f13.chunk.js"
   ]
 }

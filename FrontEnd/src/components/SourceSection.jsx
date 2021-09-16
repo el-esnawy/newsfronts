@@ -38,14 +38,16 @@ const SourceContainer = styled.div`
   grid-template-columns: repeat(auto-fit, minmax(min-content, 10rem)); */
   display: flex;
   flex-wrap: wrap;
-  place-items: center;
+  justify-content: center;
+  justify-items: stretch;
+  align-items: stretch;
   column-gap: 0.5rem;
-  row-gap: 0.5rem;
+  gap: 0.8rem;
   font-size: 1rem;
 `;
 
 const SourceButton = styled(NavLink)`
-  flex: 1 1 7%;
+  flex: 0 1 12%;
   width: max-content;
   color: #ffffff;
   background-color: ${(props) => (props.bgcolor ? props.bgcolor : "#ffffff")};
@@ -53,11 +55,11 @@ const SourceButton = styled(NavLink)`
   box-shadow: 0 6px 8px rgba(0, 0, 0, 0.25);
   border-radius: 5px;
   border: none;
-  padding: 0.2rem;
+  padding: 0.2rem 0.8rem;
   display: grid;
   place-items: center;
   min-height: 3rem;
-  margin: 0.25rem;
+  margin: 0.2rem;
 
   &:hover {
     color: #000000;
@@ -83,7 +85,7 @@ const WideImage = styled.img`
 `;
 
 const activeStyle = {
-  boxShadow: `0 0 0 4px #93b5c6, 0 0 0 7px #334257`,
+  boxShadow: `0 0 0 5px #93b5c6, 0 0 0 8px #334257`,
 };
 const SourcesSection = () => {
   return (
