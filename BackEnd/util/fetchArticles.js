@@ -52,7 +52,74 @@ const removeDuplicates = async (Model) => {
     if (index === documents.length - 1) return true;
   });
 };
+const cleanHTMLTAGS = async (article, index) => {
+  const {
+    content: articleContent,
+    title: articleTitle,
+    description: desc,
+    _id: id,
+  } = article;
 
+  const optionsSaintize = {
+    allowedTags: [],
+    allowedAttributes: [],
+  };
+  const sanitaizedContent = sanitizeHtml(articleContent, optionsSaintize);
+  const sanitaizedtitle = sanitizeHtml(articleTitle, optionsSaintize);
+  const sanitaizeddescription = sanitizeHtml(desc, optionsSaintize);
+
+  if (
+    sanitaizedContent === articleContent &&
+    sanitaizedtitle === articleTitle &&
+    sanitaizeddescription === desc
+  ) {
+    return;
+  } else {
+    const newArticles = {
+      content: sanitaizedContent,
+      title: sanitaizedtitle,
+      description: sanitaizeddescription,
+    };
+
+    const updateArticle = await Article.findByIdAndUpdate(id, newArticles);
+
+    if (updateArticle) {
+      console.log(`${index} / ${updateArticle.length}`);
+    }
+  }
+};
+
+const cleanAuthor = async (article) => {
+  const { _id: id, author } = article;
+
+  if (
+    validURL.isHttpUri(author) ||
+    validURL.isHttpsUri(author) ||
+    validURL.isUri(author) ||
+    validURL.isWebUri(author)
+  ) {
+    await Article.findByIdAndDelete(id);
+  }
+};
+
+async function cleanUp() {
+  await Article.deleteMany({ urlToImage: { $eq: null || undefined } });
+  await Headlines.deleteMany({ urlToImage: { $eq: null || undefined } });
+  const ArticlesDone = await removeDuplicates(Article);
+  const headlinesDone = await removeDuplicates(Headlines);
+
+  if (ArticlesDone) {
+    const AllArticles = await Article.find();
+    AllArticles.forEach(cleanHTMLTAGS);
+    AllArticles.forEach(cleanAuthor);
+  }
+
+  if (headlinesDone) {
+    const AllHeadlines = await Headlines.find();
+    AllHeadlines.forEach(cleanHTMLTAGS);
+    AllHeadlines.forEach(cleanAuthor);
+  }
+}
 const topHeadlines = async (source, category) => {
   try {
     if (!category && source) {
@@ -131,7 +198,6 @@ async function GetAllArticlesToday() {
       }
     })
     .filter((source) => source);
-  console.log(sourceIds);
 
   for (let i = 0; i < sourceIds.length; i++) {
     const articles = await everything(sourceIds[i]);
@@ -150,6 +216,7 @@ async function GetAllArticlesToday() {
       `All Articles: ${articles.length}  From ${articles[0]?.source?.id}  /  ( Fetched by ${sourceIds[i]})  ${done}`,
     );
     if (i === sourceIds.length - 1) {
+      await cleanUp();
       console.log("ALL DONE");
       return;
     }
@@ -183,6 +250,7 @@ async function GetAllTopHeadlinesToday() {
     );
 
     if (i === sourceIds.length - 1) {
+      await cleanUp();
       console.log("ALL DONE");
       return;
     }
@@ -198,74 +266,6 @@ async function deleteAllData() {
   }
 }
 
-const cleanHTMLTAGS = async (article, index) => {
-  const {
-    content: articleContent,
-    title: articleTitle,
-    description: desc,
-    _id: id,
-  } = article;
-
-  const optionsSaintize = {
-    allowedTags: [],
-    allowedAttributes: [],
-  };
-  const sanitaizedContent = sanitizeHtml(articleContent, optionsSaintize);
-  const sanitaizedtitle = sanitizeHtml(articleTitle, optionsSaintize);
-  const sanitaizeddescription = sanitizeHtml(desc, optionsSaintize);
-
-  if (
-    sanitaizedContent === articleContent &&
-    sanitaizedtitle === articleTitle &&
-    sanitaizeddescription === desc
-  ) {
-    return;
-  } else {
-    const newArticles = {
-      content: sanitaizedContent,
-      title: sanitaizedtitle,
-      description: sanitaizeddescription,
-    };
-
-    const updateArticle = await Article.findByIdAndUpdate(id, newArticles);
-
-    if (updateArticle) {
-      console.log(`${index} / ${updateArticle.length}`);
-    }
-  }
-};
-
-const cleanAuthor = async (article) => {
-  const { _id: id, author } = article;
-
-  if (
-    validURL.isHttpUri(author) ||
-    validURL.isHttpsUri(author) ||
-    validURL.isUri(author) ||
-    validURL.isWebUri(author)
-  ) {
-    await Article.findByIdAndDelete(id);
-  }
-};
-
-async function cleanUp() {
-  await Article.deleteMany({ urlToImage: { $eq: null || undefined } });
-  await Headlines.deleteMany({ urlToImage: { $eq: null || undefined } });
-  const ArticlesDone = await removeDuplicates(Article);
-  const headlinesDone = await removeDuplicates(Headlines);
-
-  if (ArticlesDone) {
-    const AllArticles = await Article.find();
-    AllArticles.forEach(cleanHTMLTAGS);
-    AllArticles.forEach(cleanAuthor);
-  }
-
-  if (headlinesDone) {
-    const AllHeadlines = await Headlines.find();
-    AllHeadlines.forEach(cleanHTMLTAGS);
-    AllHeadlines.forEach(cleanAuthor);
-  }
-}
 async function getSources() {
   // await Sources.deleteMany();
   const { sources } = await newsapi.v2.sources({});
@@ -297,7 +297,6 @@ async function getSources() {
 if (process.argv[2] === "--import-all") {
   GetAllArticlesToday();
   GetAllTopHeadlinesToday();
-  cleanUp();
 }
 if (process.argv[2] === "--import-articles") {
   GetAllArticlesToday();
