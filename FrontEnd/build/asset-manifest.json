@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/static/css/main.e035954d.chunk.css",
-    "main.js": "/static/js/main.b2c87f13.chunk.js",
-    "main.js.map": "/static/js/main.b2c87f13.chunk.js.map",
+    "main.js": "/static/js/main.2b6b5a5f.chunk.js",
+    "main.js.map": "/static/js/main.2b6b5a5f.chunk.js.map",
     "runtime-main.js": "/static/js/runtime-main.6cbc5f42.js",
     "runtime-main.js.map": "/static/js/runtime-main.6cbc5f42.js.map",
     "static/css/2.8052dde3.chunk.css": "/static/css/2.8052dde3.chunk.css",
@@ -13,27 +13,32 @@
     "static/css/main.e035954d.chunk.css.map": "/static/css/main.e035954d.chunk.css.map",
     "static/js/2.60df239f.chunk.js.LICENSE.txt": "/static/js/2.60df239f.chunk.js.LICENSE.txt",
     "static/media/1200px-Axios_logo_(2020).svg.78e20a74.png": "/static/media/1200px-Axios_logo_(2020).svg.78e20a74.png",
-    "static/media/ABC-logo.e9d8cf54.png": "/static/media/ABC-logo.e9d8cf54.png",
+    "static/media/ABC-logo.81ec3446.png": "/static/media/ABC-logo.81ec3446.png",
+    "static/media/ARS-logo-removebg-preview.9a70826b.png": "/static/media/ARS-logo-removebg-preview.9a70826b.png",
     "static/media/BBC_logo.dbf3a320.png": "/static/media/BBC_logo.dbf3a320.png",
     "static/media/BI-logo.ed118c3e.png": "/static/media/BI-logo.ed118c3e.png",
-    "static/media/Breitebart-logo (2).026433b9.jpg": "/static/media/Breitebart-logo (2).026433b9.jpg",
+    "static/media/Bleacher-logo-removebg-preview.7d3c409b.png": "/static/media/Bleacher-logo-removebg-preview.7d3c409b.png",
+    "static/media/Breitebart-logo-removebg-preview.b0464437.png": "/static/media/Breitebart-logo-removebg-preview.b0464437.png",
     "static/media/BuzzFeed-Logo.4f74af05.png": "/static/media/BuzzFeed-Logo.4f74af05.png",
+    "static/media/CBC-logo-removebg-preview.164791a7.png": "/static/media/CBC-logo-removebg-preview.164791a7.png",
     "static/media/CNN-logo.4050e2dc.png": "/static/media/CNN-logo.4050e2dc.png",
     "static/media/semantic.min.css": "/static/media/outline-icons.ddae9b1b.woff",
+    "static/media/cbs-logo-removebg-preview.e89d1c21.png": "/static/media/cbs-logo-removebg-preview.e89d1c21.png",
     "static/media/foxNews-logo.69a634aa.jpg": "/static/media/foxNews-logo.69a634aa.jpg",
     "static/media/fox_sports_logo.d8c4e67e.png": "/static/media/fox_sports_logo.d8c4e67e.png",
-    "static/media/ign-logo.d8826065.png": "/static/media/ign-logo.d8826065.png",
+    "static/media/ign-logo-removebg-preview.0892a8de.png": "/static/media/ign-logo-removebg-preview.0892a8de.png",
+    "static/media/independent-logo-removebg-preview.fec78f7f.png": "/static/media/independent-logo-removebg-preview.fec78f7f.png",
     "static/media/msnbc-logo.2bbc4eb1.png": "/static/media/msnbc-logo.2bbc4eb1.png",
     "static/media/nbc-logo.b214552d.png": "/static/media/nbc-logo.b214552d.png",
-    "static/media/newsweek-logo.68819ab1.jpg": "/static/media/newsweek-logo.68819ab1.jpg",
+    "static/media/newsweek-logo-removebg-preview.c792a95f.png": "/static/media/newsweek-logo-removebg-preview.c792a95f.png",
     "static/media/reuters-logo.d7bac795.png": "/static/media/reuters-logo.d7bac795.png",
-    "static/media/vice-logo.4645c8a2.jpg": "/static/media/vice-logo.4645c8a2.jpg"
+    "static/media/vice-logo-removebg-preview.b0f7e0c1.png": "/static/media/vice-logo-removebg-preview.b0f7e0c1.png"
   },
   "entrypoints": [
     "static/js/runtime-main.6cbc5f42.js",
     "static/css/2.8052dde3.chunk.css",
     "static/js/2.60df239f.chunk.js",
     "static/css/main.e035954d.chunk.css",
-    "static/js/main.b2c87f13.chunk.js"
+    "static/js/main.2b6b5a5f.chunk.js"
   ]
 }
